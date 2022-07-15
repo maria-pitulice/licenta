@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Result</title>
+    <style>
+        * {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        html, body {
+            background: #fcfcfc;
+            font-size: 130%;
+        }
+        p {
+            margin: 8px 0;
+        }
+        .flex {
+          display: flex;
+          align-items: flex-start;
+          justify-content: space-around;
+        }
+        .container {
+            border: 1px solid black;
+            padding: 8px 14px;
+            height: 500px;
+            overflow: auto;
+            border-radius: 2px;
+            width: 800px;
+        }
+        .container p {
+            white-space: nowrap;
+        }
+        .percentage {
+            text-align: center;
+            margin-top: 25px;
+        }
+    </style>
+</head>
+<body>
+    <h2 class="percentage">{{ percentage }}% Similar</h2>
+    <div class="flex">
+        <div class="container">
+            <h2>{{ filename1 }}</h2>
+            {% for i in range(text1|length) %}
+                <p style="color: {{ colors1.get(i+1) or 'black' }}">{{ i+1 }} | {{ text1[i] }}</p>
+            {% endfor %}
+        </div>
+        <div class="container">
+            <h2>{{ filename2 }}</h2>
+            {% for i in range(text2|length) %}
+                <p style="color: {{ colors2.get(i+1) or 'black' }}">{{ i+1 }} | {{ text2[i] }}</p>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
